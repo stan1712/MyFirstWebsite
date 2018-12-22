@@ -6,14 +6,10 @@ var express = require("express");
 var session = require('express-session');
 
 // File modification
-var fs = require("fs");
-var bodyParser = require("body-parser");
-
 // MongoDb
 var mongoose = require("mongoose");
 
 var servlog = require("./modules/connect.js"); // Log pour le lancement
-var parauser = require("./modules/parauser.js"); // Paramètres d'encryptage/décryptage utilisateur
 
 // Parameter for express()
 var app = express();
@@ -43,25 +39,6 @@ catch (e) {
 	servlog.Nope();
 	console.log(e);
 }
-
-
-/*
-	-- SCHEMA POUR LA DB --
-*/
-var schema = mongoose.Schema(
-	{
-		firstname: String,
-		lastname: String,
-		email: String,
-		company: String,
-
-		ownerof: String,
-		cart: Number,
-
-		password: String,
-		last_update: {type: Date, default: Date.now},
-	}
-);
 
 
 /*

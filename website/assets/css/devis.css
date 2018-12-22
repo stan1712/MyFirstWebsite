@@ -1,0 +1,215 @@
+body {
+  font-family: 'Lato', sans-serif;
+    width: 950px;
+    margin: 0 auto;
+    padding: 0 auto;
+}
+
+
+.row {
+}
+.col-6 {
+    text-align: center;
+}
+.col-2 {
+    text-align: center;
+}
+
+.Contenu {
+    width: 950px;
+    margin: 0 auto;
+    padding: 0 auto;
+}
+
+.BlockHG {
+    padding: 100px;
+    text-align: left;
+}
+
+.TextContent {
+    font-size: 10pt;
+}
+
+.TextContentTitle {
+    font-size: 14pt;
+    text-align: left;
+}
+
+.TextContentTitleDetails {
+    font-size: 18pt;
+    text-align: left;
+}
+
+.TextContentItems {
+    
+  font-family: 'Lato', sans-serif;
+    font-size: 14pt;
+    font-weight: 500; 
+}
+
+.Titles {
+    
+}
+
+.Line {
+    height: 2px;
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: #2b7082;
+}
+
+.DetailsContent {
+    text-align: justify;
+      font-family: 'Lato', sans-serif;
+    font-size: 9pt;
+    
+}
+
+.Devis {
+    font-size: 3em;
+    letter-spacing: .3rem;
+}
+
+
+.Dest {
+    margin-top: 20px;
+    line-height: 1px;
+}
+.Destinataire {
+    
+      font-family: 'Lato', sans-serif;
+    font-size: 10pt;
+    font-weight: 700;
+    color: #c3dde3;
+    
+}
+
+.DestinataireEntreprise  {
+    
+      font-family: 'Lato', sans-serif;
+    font-size: 8pt;
+    font-weight: 700;
+    text-transform: uppercase;
+  
+}
+
+.InfographartHD {
+    text-align: right;
+    font-size: 2.3em;
+    line-height: 40px;
+}
+.MyName {
+    text-align: right;
+    line-height: 0px;
+    color: #5c5c5c;
+}
+
+.InfosDevis {
+    text-align: right;
+    font-size: 0.7em;
+    font-weight: 700;
+}
+
+.InfosDevisVar {
+    text-align: Left;
+    font-size: 0.7em;
+    font-weight: 700;
+}
+
+.Projet {
+    text-align: center;
+        font-size: 1.5em;
+    line-height: 0.2;
+    
+}
+
+.Gras {
+    font-weight: 700;
+}
+
+.TextContentItemsBas {
+    
+  font-family: 'Lato', sans-serif;
+    font-size: 12pt;
+    font-weight: 500;
+    text-align: right;
+}
+
+.TextContentItemsBasRed {
+        
+  font-family: 'Lato', sans-serif;
+    font-size: 8pt;
+    font-weight: 500;
+    text-align: right;
+    line-height: 0;
+}
+
+.TextContentItemsTotal {
+    
+  font-family: 'Lato', sans-serif;
+    font-size: 17pt;
+    font-weight: 700;
+    text-align: right;
+}
+
+.TextContentItemsTotal2 {
+    
+  font-family: 'Lato', sans-serif;
+    font-size: 17pt;
+    font-weight: 700;
+    text-align: right;
+}
+.MethodePaiements {
+    text-align: left;
+    font-size: 10pt;
+}
+
+.Paiements {
+    text-align: left;
+    line-height: 0;
+    font-weight: 300;
+    
+}
+
+.RIB {
+    font-weight: 300;
+}
+
+.Desc {
+    font-size: 0.7em;
+    line-height: 1.3;
+    
+}
+
+.desc50 {
+    height: 50%;
+    display: block;
+}
+.TextRight {
+    text-align: right;
+
+}
+
+.NameBas {
+    text-align: right;
+    font-size: 1.2em;
+    font-weight: 700;
+    text-transform: uppercase;  
+    
+}
+
+.NomLogo {
+    text-align: right;
+    line-height: 75px;
+    letter-spacing: .2rem;
+    
+    
+}
+
+.logo {
+    height: 50px;
+}
+
+.center {
+    text-align: center;
+}

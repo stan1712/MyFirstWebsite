@@ -1,0 +1,24 @@
+{
+	"name": "ifga-webbuilder",
+	"version": "1.3.2",
+	"author": "stanislasbdx <perso@stan1712.com>",
+	"description": "Un webbuilder simple et rapide",
+	"private": true,
+	"dependencies": {
+		"body-parser": "latest",
+		"connect": "^3.6.6",
+		"ejs": "latest",
+		"express": "latest",
+		"express-session": "latest",
+		"fs": "latest",
+		"mongodb": "latest",
+		"mongoose": "latest",
+		"nodemon": "latest",
+		"npm": "latest"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://stanislasbdx@bitbucket.org/stanislasbdx/ifga-webbuilder.git"
+	}
+}

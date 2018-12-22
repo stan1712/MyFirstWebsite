@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<title>IFGA WebBuilder | Editor</title>
+	<% include ../includes/header.ejs %>
+		<style>
+			body {
+				padding-top: 5rem;
+			}
+
+			.starter-template {
+				padding: 3rem 1.5rem;
+				text-align: center;
+			}
+		</style>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+		<a class="navbar-brand" href="#">
+			<img src="/assets/img/logo_black_nobg.png" width="35" height="30" class="d-inline-block align-top" alt=""> WebBuilder
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="/editor/">Editor
+						<span class="sr-only">(actuel)</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Guides</a>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav ml-auto">
+				<li class="nav-item active dropdown my-2 my-lg-0 mr-sm-2 my-2 my-sm-0">
+					<a class="nav-link dropdown-toggle" href="https://infographart.com" id="welcome_user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Votre profil</a>
+					<div class="dropdown-menu" aria-labelledby="dropdown01">
+						<a class="dropdown-item active" href="/editor/profile/">Modifier son profil</a>
+						<a class="dropdown-item" href="#">Se déconnecter</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<main role="main" class="container">
+		<form method="POST" id="signup-form" action="/editor/profile">
+			<fieldset>
+				<div class="form-group">
+					<label for="firstname">Prénom</label>
+					<input type="text" class="form-control" name="firstname" id="firstname" value="<%= db.firstname %>" required>
+				</div>
+				<div class="form-group">
+					<label for="lastname">Nom</label>
+					<input type="text" class="form-control" name="lastname" id="lastname" value="<%= db.lastname %>" required>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input type="email" class="form-control" name="email" id="email" value="<%= db.email %>" required>
+				</div>
+				<div class="form-group">
+					<label for="password">Mot de passe</label>
+					<input type="password" class="form-control" name="password" id="password" placeholder="Crypté : <%= db.password %>" placeholder>
+				</div>
+				<button type="submit" id="addButton" class="btn btn-primary">Envoyer</button>
+			</fieldset>
+		</form>
+	</main>
+</body>
+<% include ../includes/scripts.ejs %>
+	<script>
+		var db;
+
+		document.addEventListener("DOMContentLoaded", function () {
+
+			if ("indexedDB" in window) {
+				idbSupported = true;
+			}
+
+			if (idbSupported) {
+				var openRequest = indexedDB.open("InfographDB", 3);
+
+				openRequest.onupgradeneeded = function (e) {
+					var thisDB = e.target.result;
+					if (!thisDB.objectStoreNames.contains("user_info")) {
+						thisDB.createObjectStore("user_info", { autoIncrement: true });
+					}
+				};
+
+				openRequest.onsuccess = function (e) {
+					console.log("[InfographDB] Connexion à la base de donnée client réussie !");
+					db = e.target.result;
+					document.querySelector("#addButton").addEventListener("click", upPerson, false);
+				};
+
+				openRequest.onerror = function (e) {
+					console.log("[InfographDB] Erreur lors de la connexion a la base de donnée client...");
+					console.dir(e);
+				};
+			}
+		}, false);
+
+		function upPerson(e) {
+			var transaction = db.transaction(["user_info"], "readwrite");
+			var store = transaction.objectStore("user_info");
+
+			var firstname = document.querySelector("#firstname").value;
+			var lastname = document.querySelector("#lastname").value;
+			var email = document.querySelector("#email").value;
+
+			var person = {
+				firstname: firstname,
+				lastname: lastname,
+				email: email,
+				logged: true,
+				last_update: new Date()
+			};
+
+			var req = store.put(person, 1);
+			req.onsuccess = function (e) {
+				console.log("[InfographDB] Mise à jour effectuée avec succés !");
+			};
+			req.onerror = function (e) {
+				console.log("[InfographDB] Mise à jour échouée !");
+				console.dir(e);
+			};
+		}
+
+		function getPerson(e) {
+			var transaction = db.transaction(["user_info"], "readonly");
+			var store = transaction.objectStore("user_info");
+
+			var request = store.get(1);
+
+			request.onsuccess = function (e) {
+				var result = e.target.result;
+
+				var lastname = result.lastname;
+				var upper_lastname = lastname.toUpperCase();
+
+				var txt = document.querySelector('#welcome_user');
+				txt.textContent = upper_lastname + " " + result.firstname;
+			};
+		}
+	</script>
+
+</html>

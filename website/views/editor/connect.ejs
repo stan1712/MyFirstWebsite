@@ -1,0 +1,222 @@
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>Connexion</title>
+
+		<link rel="stylesheet" type="text/css" href="/assets/css/base.css" />
+		<link rel="stylesheet" type="text/css" href="/assets/css/tabs.css" />-
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+		<script>document.documentElement.className = "js"; var supportsCssVars = function () { var e, t = document.createElement("style"); return t.innerHTML = "root: { --tmp-var: bold; }", document.head.appendChild(t), e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)")), t.parentNode.removeChild(t), e }; supportsCssVars() || alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+		<style>
+			@import url("https://fonts.googleapis.com/css?family=Lato");
+			* {
+				margin: 0;
+				padding: 0;
+				-moz-box-sizing: border-box;
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+			}
+		
+			.tabs {
+				width: 100%;
+				float: none;
+				list-style: none;
+				position: relative;
+				margin: 80px 0 0 10px;
+				text-align: left;
+			}
+		
+			.tabs li {
+				float: left;
+				display: block;
+			}
+		
+			.tabs input[type="radio"] {
+				position: absolute;
+				top: 0;
+				left: -9999px;
+			}
+		
+			.tabs label {
+				display: block;	
+				padding: 14px 21px;
+				border-radius: 2px 2px 0 0;
+				font-size: 20px;
+				font-weight: normal;
+				text-transform: uppercase;
+				cursor: pointer;
+				position: relative;
+				top: 4px;
+				-moz-transition: all 0.2s ease-in-out;
+				-o-transition: all 0.2s ease-in-out;
+				-webkit-transition: all 0.2s ease-in-out;
+				transition: all 0.2s ease-in-out;
+			}
+		
+			.tabs label:hover {
+				background: rgb(70, 70, 70);
+			}
+		
+			.tabs .tab-content {
+				z-index: 2;
+				display: none;
+				overflow: hidden;
+				width: 100%;
+				font-size: 17px;
+				line-height: 25px;
+				padding: 25px;
+				position: absolute;
+				top: 53px;
+				left: 0;
+			}
+		
+			.tabs [id^="tab"]:checked+label {
+				top: 0;
+				padding-top: 17px;
+				background: rgb(70, 70, 70);
+			}
+		
+			.tabs [id^="tab"]:checked~[id^="tab-content"] {
+				display: block;
+			}
+		</style>
+	</head>
+	<body class="demo-2 loading">
+		<svg class="hidden">
+			<symbol id="icon-arrow" viewBox="0 0 24 24">
+				<title>arrow</title>
+				<polygon points="6.3,12.8 20.9,12.8 20.9,11.2 6.3,11.2 10.2,7.2 9,6 3.1,12 9,18 10.2,16.8 " />
+			</symbol>
+			<symbol id="icon-drop" viewBox="0 0 24 24">
+				<title>drop</title>
+				<path d="M12,21c-3.6,0-6.6-3-6.6-6.6C5.4,11,10.8,4,11.4,3.2C11.6,3.1,11.8,3,12,3s0.4,0.1,0.6,0.3c0.6,0.8,6.1,7.8,6.1,11.2C18.6,18.1,15.6,21,12,21zM12,4.8c-1.8,2.4-5.2,7.4-5.2,9.6c0,2.9,2.3,5.2,5.2,5.2s5.2-2.3,5.2-5.2C17.2,12.2,13.8,7.3,12,4.8z" />
+				<path d="M12,18.2c-0.4,0-0.7-0.3-0.7-0.7s0.3-0.7,0.7-0.7c1.3,0,2.4-1.1,2.4-2.4c0-0.4,0.3-0.7,0.7-0.7c0.4,0,0.7,0.3,0.7,0.7C15.8,16.5,14.1,18.2,12,18.2z" />
+			</symbol>
+		</svg>
+		<main>
+			<div class="content content--side">
+				<header class="codrops-header">
+					<h1 class="codrops-header__title">Inscription / Connexion</h1>
+					<p class="info">Vous nous aimez beaucoup ? Recommandez-nous un ami 😊</p>
+				</header>
+				<ul class="tabs" role="tablist">
+					<li>
+						<input type="radio" name="tabs" id="tab1" checked />
+						<label for="tab1" role="tab" aria-selected="true" aria-controls="panel1" tabindex="0">S'inscrire</label>
+						<div id="tab-content1" class="tab-content" role="tabpanel" aria-labelledby="description" aria-hidden="false">
+							<form class="form" id="signup-form" method="POST" action="/logup">
+								<div class="form__item">
+									<input class="form__input" type="text" name="ifirstname" id="ifirstname" placeholder="Prénom" required>
+								</div>
+								<div class="form__item">
+									<input class="form__input" type="text" name="ilastname" id="ilastname" placeholder="Nom" required>
+								</div>
+								<div class="form__item">
+									<input class="form__input" type="email" name="iemail" id="iemail" placeholder="Email" required>
+								</div>
+								<div class="form__item">
+									<div class="form__input-wrap">
+										<input class="form__input" type="password" name="ipassword" id="ipassword" placeholder="Mot de passe" required>
+										<p class="form__password-strength" id="strength-output"></p>
+									</div>
+								</div>
+								<div class="form__item form__item--actions">
+									<input class="form__button" type="submit" id="addButton" name="signup" value="S'inscrire">
+								</div>
+							</form>
+						</div>
+					</li>
+				
+					<li>
+						<input type="radio" name="tabs" id="tab2" />
+						<label for="tab2" role="tab" aria-selected="false" aria-controls="panel2" tabindex="0">Se connecter</label>
+						<div id="tab-content2" class="tab-content" role="tabpanel" aria-labelledby="specification" aria-hidden="true">
+							<form class="form" id="login-form" method="POST" action="/logup">
+								<div class="form__item">
+									<input class="form__input" type="email" name="cemail" id="cemail" placeholder="Email" required>
+								</div>
+								<div class="form__item">
+									<input class="form__input" type="password" name="cpassword" id="cpassword" placeholder="Mot de passe" required>
+								</div>
+								<div class="form__item form__item--actions">
+									<input class="form__button" type="submit" name="signup" value="Se connecter">
+								</div>
+							</form>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="content content--side">
+			<div class="poster" style="background-image:url(/assets/img/1.jpg)"></div>
+				<div class="canvas-wrap">
+					<canvas></canvas>
+				</div>
+			</div>
+		</main>
+		<script src="/assets/js/imagesloaded.encrypt.pkgd.min.js"></script>
+		<script src="/assets/js/demo2.js"></script>
+		<script>
+		var db;
+
+		document.addEventListener("DOMContentLoaded", function () {
+
+			if ("indexedDB" in window) {
+				idbSupported = true;
+			}
+
+			if (idbSupported) {
+				var openRequest = indexedDB.open("InfographDB", 3);
+
+				openRequest.onupgradeneeded = function (e) {
+					var thisDB = e.target.result;
+					if (!thisDB.objectStoreNames.contains("user_info")) {
+						thisDB.createObjectStore("user_info", { autoIncrement: true });
+					}
+				}
+
+				openRequest.onsuccess = function (e) {
+					console.log("[InfographDB] Connexion à la base de donnée client réussie !");
+					db = e.target.result;
+					document.querySelector("#addButton").addEventListener("click", upPerson, false);
+				}
+
+				openRequest.onerror = function (e) {
+					console.log("[InfographDB] Erreur lors de la connexion a la base de donnée client...");
+					console.dir(e);
+				}
+
+			}
+
+		}, false);
+
+		function upPerson(e) {
+			var transaction = db.transaction(["user_info"], "readwrite");
+			var store = transaction.objectStore("user_info");
+
+			var firstname = document.querySelector("#ifirstname").value;
+			var lastname = document.querySelector("#ilastname").value;
+			var email = document.querySelector("#iemail").value;
+
+			var person = {
+				firstname: firstname,
+				lastname: lastname,
+				email: email,
+				logged: false,
+				last_update: new Date(),
+			}
+
+			var req = store.put(person, 1);
+			req.onsuccess = function (e) {
+				console.log("[InfographDB] Mise à jour effectuée avec succés !");
+			}
+			req.onerror = function (e) {
+				console.log("[InfographDB] Mise à jour échouée !");
+				console.error(e);
+			}
+		}
+		</script>
+	</body>
+</html>

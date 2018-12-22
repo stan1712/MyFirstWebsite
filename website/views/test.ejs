@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>IFGA WebBuilder | Tests</title>
+        <% include includes/header.ejs %>
+    </head>
+    <body>
+        <input id="pd1" type="button" value="Démarrer la machine">
+        <p id="pd2">La machine est arrêtée.</p>
+    </body>
+    <script>
+        var btn = document.querySelector('input');
+        var txt = document.querySelector('p');
+
+        btn.addEventListener('click', updateBtn);
+
+        function updateBtn() {
+            if (btn.value === 'Démarrer la machine') {
+                btn.value =  'Arrêter la machine'
+                txt.textContent =  'La machine est démarrée !'
+            }
+            else {
+                btn.value =  'Démarrer la machine'
+                txt.textContent =  'La machine est arrêtée.'
+            }
+        }
+    </script>
+</html>
